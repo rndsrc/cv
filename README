@@ -1,0 +1,12 @@
+This directory contains a LaTeX document class, cv.cls, written for
+Chi-kwan Chan's Curriculum Vitae, and a simple example that uses it.
+
+The document class is based on article.cls.  I have a \makeinfo macro
+instead of using \maketitle.  I also redefine \part[]{} and \part*{}
+so they set the page heading.  There are also two list environments,
+"tlist" for tabbed list and "ilist" for enumerate list with inverse
+numbering.
+
+cv.cls is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
