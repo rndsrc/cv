@@ -74,7 +74,14 @@
 \pagestyle{plain}
 
 % References
-\RequirePackage{natbib}
+\RequirePackage{natbib,multicol}
+\bibliographystyle{nature}
+\renewcommand\bibfont{\small}
+\setlength\bibsep{\z@}
+\renewcommand\bibpreamble{\begin{multicols}{2}}
+\renewcommand\bibpostamble{\end{multicols}}
+\renewcommand\bibsection{\subsection*{%
+    \refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
 
 %==============================================================================
 % Main Code
