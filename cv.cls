@@ -53,7 +53,7 @@
 % Format
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
   {\cv@parsep}{-1em}{\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\z@}%
   {\cv@subsep}{-1em}{\normalfont\normalsize\bfseries}}
 
 % Page Style
@@ -76,7 +76,7 @@
 % References
 \RequirePackage{natbib,multicol}
 \bibliographystyle{nature}
-\renewcommand\bibfont{\small}
+\renewcommand\bibfont{\scriptsize}%{\footnotesize}
 \setlength\bibsep{\z@}
 \renewcommand\bibpreamble{\begin{multicols}{2}}
 \renewcommand\bibpostamble{\end{multicols}}
@@ -93,6 +93,7 @@
 \newcommand\fax    [1]{\gdef\cv@fax    {#1}}
 \newcommand\email  [1]{\gdef\cv@email  {#1}}
 \newcommand\website[1]{\gdef\cv@website{#1}}
+\newcommand\repos  [1]{\gdef\cv@repos  {#1}}
 
 % E-mail
 \RequirePackage{hyperref}
@@ -109,10 +110,10 @@
       \cv@info
     \end{minipage}
     \begin{minipage}{0.50\linewidth}\raggedleft
-      Phone: \cv@phone\\
-      Fax: \cv@fax\\
-      E-mail: \mailto{\cv@email}\\
-      \url{\cv@website}
+      Phone:~\cv@phone\\
+      E-mail:~\mailto{\cv@email}\\
+      Website:~\url{\cv@website}\\
+      \url{\cv@repos}
     \end{minipage}
   }
   \vspace*{-3.5pt}
@@ -156,6 +157,8 @@
                 leftmargin=2.em,
                 rightmargin=0pt]{etaremune}
 \newenvironment{ilist}{\etaremune{}{}}{\endetaremune}
+
+\RequirePackage{graphicx,multirow,rotating}
 
 %==============================================================================
 % End `cv.cls'
