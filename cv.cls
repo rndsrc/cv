@@ -141,12 +141,25 @@
                 \itemsep\cv@tlssep\itemindent\z@
                 \parsep\z@\listparindent\z@
                 \labelsep\z@
-                \labelwidth7em
-                \leftmargin7em
+                \labelwidth1in
+                \leftmargin1in
                 \rightmargin\z@
                 \let\makelabel\tlistlabel}}
                {\endlist}
 \newcommand*\tlistlabel[1]{\normalfont #1\hfill}
+
+% Wide tabbed list
+\newenvironment{Tlist}{\list{}
+               {\parskip\z@\topsep\z@\partopsep\z@
+                \itemsep\cv@tlssep\itemindent\z@
+                \parsep\z@\listparindent\z@
+                \labelsep\z@
+                \labelwidth1.25in
+                \leftmargin1.25in
+                \rightmargin\z@
+                \let\makelabel\Tlistlabel}}
+               {\endlist}
+\newcommand*\Tlistlabel[1]{\normalfont #1\hfill}
 
 % Inverse enumerate list
 \RequirePackage[parskip=0pt,topsep=0pt,partopsep=0pt,
