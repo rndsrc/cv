@@ -80,8 +80,9 @@
 \pagestyle{plain}
 
 % References
-\RequirePackage{natbib,multicol}
-\bibliographystyle{nature}
+\RequirePackage{multicol}
+\usepackage[square,comma,super]{natbib}
+\bibliographystyle{unsrtapj}
 \renewcommand\bibfont{\scriptsize}%{\footnotesize}
 \setlength\bibsep{\z@}
 \renewcommand\bibpreamble{\begin{multicols}{2}}
