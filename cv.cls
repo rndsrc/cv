@@ -22,9 +22,9 @@
 \LoadClass{article}
 
 \newcommand\cv@parsep{1.ex}
-\newcommand\cv@subsep{\z@}
+\newcommand\cv@subsep{.5ex}
 \newcommand\cv@tlssep{.5ex}
-\newcommand\cv@ilssep{\z@}
+\newcommand\cv@ilssep{.5ex}
 
 \if@resume
   \title{R\'esum\'e}
