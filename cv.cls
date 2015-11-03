@@ -94,17 +94,63 @@
 % Main Code
 %------------------------------------------------------------------------------
 % Title Page information:
-\newcommand\address[1]{\gdef\cv@address{#1}}
-\newcommand\info   [1]{\gdef\cv@info   {#1}}
-\newcommand\phone  [1]{\gdef\cv@phone  {#1}}
-\newcommand\fax    [1]{\gdef\cv@fax    {#1}}
-\newcommand\email  [1]{\gdef\cv@email  {#1}}
-\newcommand\website[1]{\gdef\cv@website{#1}}
-\newcommand\repos  [1]{\gdef\cv@repos  {#1}}
+\newcommand\info   [1]{\gdef\cv@info     {#1}}
+\newcommand\phone  [1]{\gdef\cv@phone    {#1}}
+\newcommand\email  [1]{\gdef\cv@email    {#1}}
+\newcommand\website[1]{\gdef\cv@website  {#1}}
+\newcommand\repos  [1]{\gdef\cv@repos    {#1}}
+\newcommand\address[1]{\gdef\cv@address  {#1}}
 
+% Cover Letter
+\newcommand\sender   [1]{\gdef\cl@address  {#1}}
+\newcommand\recipient[1]{\gdef\cl@recipient{#1}}
+\newcommand\greetto  [1]{\gdef\cl@greetto  {#1}}
+\newcommand\closing  [1]{\gdef\cl@closing  {#1}}
+
+%------------------------------------------------------------------------------
 % E-mail
 \RequirePackage{hyperref}
 \newcommand\mailto[1]{\href{mailto:#1}{\texttt{#1}}}
+
+% Redefine \part[]{}
+\def\@part[#1]#2{%
+    \thispagestyle{fancy}
+    \ifnum \c@secnumdepth >\m@ne
+      \refstepcounter{part}%
+      \addcontentsline{toc}{part}{\thepart\hspace{1em}#2}%
+    \else
+      \addcontentsline{toc}{part}{#2}%
+    \fi
+    \title{#1}
+    \markboth{#2}{#2}
+    \@afterheading}
+
+% Redefine \part*{}, which takes only one argument
+\def\@spart#1{\markboth{#1}{#1}\@afterheading}
+
+%------------------------------------------------------------------------------
+% Make cover letter
+\newcommand\makecover[1]{
+  \thispagestyle{empty}
+  \vspace*{-36pt} % - \topmargin - \headheight - \headsep
+  {
+    \setlength\parindent{0pt}
+    \setlength\parskip{0.7em}
+    {\raggedleft\begin{tabular}{l@{}}
+      \ignorespaces%
+      \ifx\@empty\cl@address\cv@address\else\cl@address\fi\\*[\parskip]
+      \@date
+      \end{tabular}\par}
+    \cl@recipient\par\vspace{\parskip}
+    \cl@greetto\par
+    \input{#1}\strut\par\nobreak\vspace{\parskip}
+    \noindent\hspace*{.67\textwidth}
+    \parbox{.33\textwidth}{\strut\raggedright
+      \cl@closing\\*[2\medskipamount]
+      \includegraphics[scale=0.125]{signature}\\
+      \@author}
+  }
+}
 
 % Make Resume
 \let\maketitle\undefined % don't need maketitle
@@ -126,22 +172,7 @@
   \vspace*{-3.5pt}
 }
 
-% Redefine \part[]{}
-\def\@part[#1]#2{%
-    \thispagestyle{fancy}
-    \ifnum \c@secnumdepth >\m@ne
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{\thepart\hspace{1em}#2}%
-    \else
-      \addcontentsline{toc}{part}{#2}%
-    \fi
-    \title{#1}
-    \markboth{#2}{#2}
-    \@afterheading}
-
-% Redefine \part*{}, which takes only one argument
-\def\@spart#1{\markboth{#1}{#1}\@afterheading}
-
+%------------------------------------------------------------------------------
 % Tabbed list
 \newenvironment{tlist}{\list{}
                {\parskip\z@\topsep\z@\partopsep\z@
