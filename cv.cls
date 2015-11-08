@@ -96,10 +96,14 @@
 \newcommand\address[1]{\gdef\cv@address  {#1}}
 
 % Cover Letter
-\newcommand\sender   [1]{\gdef\cl@address  {#1}}
-\newcommand\recipient[1]{\gdef\cl@recipient{#1}}
-\newcommand\greetto  [1]{\gdef\cl@greetto  {#1}}
-\newcommand\closing  [1]{\gdef\cl@closing  {#1}}
+\newcommand\background[1]{\gdef\cl@background{#1}}
+\newcommand\sender    [1]{\gdef\cl@address   {#1}}
+\newcommand\recipient [1]{\gdef\cl@recipient {#1}}
+\newcommand\greetto   [1]{\gdef\cl@greetto   {#1}}
+\newcommand\closing   [1]{\gdef\cl@closing   {#1}}
+
+\background{}
+\sender{}
 
 %------------------------------------------------------------------------------
 % E-mail
@@ -108,22 +112,23 @@
 
 % Redefine \part[]{}
 \def\@part[#1]#2{%
-    \thispagestyle{fancy}
-    \ifnum \c@secnumdepth >\m@ne
-      \refstepcounter{part}%
-      \addcontentsline{toc}{part}{\thepart\hspace{1em}#2}%
-    \else
-      \addcontentsline{toc}{part}{#2}%
-    \fi
-    \title{#1}
-    \markboth{#2}{#2}
-    \@afterheading}
+  \thispagestyle{fancy}
+  \ifnum \c@secnumdepth >\m@ne
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{\thepart\hspace{1em}#2}%
+  \else
+    \addcontentsline{toc}{part}{#2}%
+  \fi
+  \title{#1}
+  \markboth{#2}{#2}
+  \@afterheading}
 
 % Redefine \part*{}, which takes only one argument
 \def\@spart#1{\markboth{#1}{#1}\@afterheading}
 
 %------------------------------------------------------------------------------
 % Make cover letter
+\RequirePackage{eso-pic}
 \newcommand\makecover[1]{
   \thispagestyle{empty}
   \vspace*{-36pt} % - \topmargin - \headheight - \headsep
@@ -144,6 +149,13 @@
       \includegraphics[scale=0.125]{signature}\\
       \@author}
   }
+  \ifx\@empty\cl@background\else % add background
+    \AddToShipoutPicture*{\put(0,0){\parbox[b][\paperheight]{\paperwidth}{%
+      \vfill\centering%
+      \includegraphics[width=\paperwidth,height=\paperheight,%
+        keepaspectratio]{\cl@background}%
+    }}}%
+  \fi
 }
 
 % Make Resume
