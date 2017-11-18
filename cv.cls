@@ -8,12 +8,15 @@
 % Identification
 %------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
+
 \ProvidesClass{cv}[%
   2011/09/29%
-  A Simple Curriculum Vitae Document Class]
+  Steward Observatory, the University of Arizona%
+  A Simple Curriculum Vitae Document Class%
+]
 
 %==============================================================================
-% Initialize the Code
+% Initialization
 %-----------------------------------------------------------------------------
 \newif\if@resume\@resumefalse
 \DeclareOption{resume}\@resumetrue
