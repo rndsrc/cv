@@ -182,6 +182,10 @@
 \def\@spart#1{\markboth{#1}{#1}\@afterheading}
 
 %------------------------------------------------------------------------------
+% Set Page Title
+\newcommand\pagetitle[1]{\markboth{#1}{#1}}
+
+%------------------------------------------------------------------------------
 % Make cover letter
 \newcommand\makecover[1]{
   \thispagestyle{empty}
