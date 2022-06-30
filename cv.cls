@@ -69,14 +69,14 @@
 \markboth{\@title}{\@title}
 \title{}
 
-\newcommand\cv@srule{\hspace{-\linewidth}\rule[-1.ex]{\linewidth}{0.4pt}}
-\newcommand\cv@frule{\hspace{-\linewidth}\rule[-.8ex]{\linewidth}{1.2pt}%
-                     \hspace{-\linewidth}\rule[-1.ex]{\linewidth}{0.4pt}}
+\newcommand\cv@srule{\hspace{-\textwidth}\rule[-1.ex]{\textwidth}{0.4pt}}
+\newcommand\cv@frule{\hspace{-\textwidth}\rule[-.8ex]{\textwidth}{1.2pt}%
+                     \hspace{-\textwidth}\rule[-1.ex]{\textwidth}{0.4pt}}
 
 \newcommand{\ps@fancy}{
   \let\@mkboth\@gobbletwo
-  \def\@oddhead {\reset@font\huge\textsc\@title\hfil\textsc\@author\cv@frule}
-  \def\@evenhead{\reset@font\huge\textsc\@author\hfil\textsc\@title\cv@frule}
+  \def\@oddhead {\reset@font\LARGE\textsc\@title\hfil\textsc\@author\cv@frule}
+  \def\@evenhead{\reset@font\LARGE\textsc\@author\hfil\textsc\@title\cv@frule}
 }
 \renewcommand{\ps@plain}{
   \let\@mkboth\@gobbletwo
@@ -87,12 +87,29 @@
 
 %------------------------------------------------------------------------------
 % Redefine paragraphs:
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.5ex}%
+  {2.3ex \@plus .2ex}%
+  {\normalfont\large\bfseries}}
+
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
   {\cv@parsep}{-1em}{\normalfont\normalsize\bfseries}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\z@}%
   {\cv@subsep}{-1em}{\normalfont\normalsize\bfseries}}
 
 %------------------------------------------------------------------------------
+% Itemize list
+\newenvironment{blist}{\itemize
+                \parskip\z@\topsep\z@\partopsep\z@
+                \itemsep\cv@tlssep\itemindent\z@
+                \parsep\z@\listparindent\z@
+                \labelsep\z@
+                \labelwidth18pt
+                \leftmargin18pt
+                \rightmargin\z@
+                \let\makelabel\tlistlabel}
+               {\enditemize}
+
 % Tabbed list
 \newenvironment{tlist}{\list{}
                {\parskip\z@\topsep\z@\partopsep\z@
@@ -144,12 +161,15 @@
 % Main code
 %------------------------------------------------------------------------------
 % Title page information:
-\newcommand\info   [1]{\gdef\cv@info     {#1}}
-\newcommand\phone  [1]{\gdef\cv@phone    {#1}}
-\newcommand\email  [1]{\gdef\cv@email    {#1}}
-\newcommand\website[1]{\gdef\cv@website  {#1}}
-\newcommand\repos  [1]{\gdef\cv@repos    {#1}}
-\newcommand\address[1]{\gdef\cv@address  {#1}}
+\newcommand\address  [1]{\gdef\cv@address  {#1}}
+\newcommand\info     [1]{\gdef\cv@info     {#1}}
+\newcommand\phone    [1]{\gdef\cv@phone    {#1}}
+\newcommand\email    [1]{\gdef\cv@email    {#1}}
+\newcommand\website  [1]{\gdef\cv@website  {#1}}
+\newcommand\repos    [1]{\gdef\cv@repos    {#1}}
+\newcommand\github   [1]{\gdef\cv@github   {#1}}
+\newcommand\gitlab   [1]{\gdef\cv@gitlab   {#1}}
+\newcommand\bitbucket[1]{\gdef\cv@bitbucket{#1}}
 
 % Cover letter
 \newcommand\background[1]{\gdef\cl@background{#1}}
@@ -223,15 +243,18 @@
   \thispagestyle{fancy}
   {
     \parindent\z@
-    \begin{minipage}{0.50\linewidth}\raggedright
-      \cv@address\\
-      \cv@info
+    \begin{minipage}[t]{0.50\textwidth}\raggedright
+      \cv@address%
+      \ifcsname cv@info\endcsname\\\cv@info\fi
     \end{minipage}
-    \begin{minipage}{0.50\linewidth}\raggedleft
+    \begin{minipage}[t]{0.50\textwidth}\raggedleft
       Phone:~\cv@phone\\
       E-mail:~\mailto{\cv@email}\\
-      Website:~\url{\cv@website}\\
-      \url{\cv@repos}
+      Website:~\url{\cv@website}%
+      \ifcsname cv@repos\endcsname\\\url{\cv@repos}\fi
+      \ifcsname cv@github\endcsname\\\url{\cv@github}\fi
+      \ifcsname cv@gitlab\endcsname\\\url{\cv@gitlab}\fi
+      \ifcsname cv@bitbucket\endcsname\\\url{\cv@bitbucket}\fi
     \end{minipage}
   }
   \vspace*{-3.5pt}
