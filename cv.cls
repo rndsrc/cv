@@ -88,7 +88,7 @@
 %------------------------------------------------------------------------------
 % Redefine paragraphs:
 \renewcommand\section{\@startsection{section}{1}{\z@}%
-  {-3.5ex \@plus -1ex \@minus -.5ex}%
+  {-3.5ex \@plus -1ex \@minus -1ex}%
   {2.3ex \@plus .2ex}%
   {\normalfont\large\bfseries}}
 
@@ -257,7 +257,7 @@
       \ifcsname cv@bitbucket\endcsname\\\url{\cv@bitbucket}\fi
     \end{minipage}
   }
-  \vspace*{-3.5pt}
+  \vspace*{6pt}
 }
 
 %==============================================================================
