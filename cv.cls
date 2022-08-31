@@ -33,6 +33,7 @@
 \RequirePackage{multicol,multirow,rotating}
 \RequirePackage{hyperref}
 \RequirePackage{graphicx,eso-pic}
+\RequirePackage{enumitem}
 
 %==============================================================================
 % Layout/Format
@@ -195,11 +196,17 @@
     \addcontentsline{toc}{part}{#2}%
   \fi
   \title{#1}
-  \markboth{#2}{#2}
+  %\markboth{#2}{#2}
+  \renewcommand\leftmark{#2}
+  \renewcommand\rightmark{#2}
   \@afterheading}
 
 % Redefine \part*{}, which takes only one argument
-\def\@spart#1{\markboth{#1}{#1}\@afterheading}
+\def\@spart#1{%
+  %\markboth{#1}{#1}
+  \renewcommand\leftmark{#1}
+  \renewcommand\rightmark{#1}
+  \@afterheading}
 
 %------------------------------------------------------------------------------
 % Set Page Title
