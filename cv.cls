@@ -215,7 +215,14 @@
 %------------------------------------------------------------------------------
 % Make cover letter
 \newcommand\makecover[1]{
-  \thispagestyle{empty}
+  \pagestyle{empty}
+  \ifx\@empty\cl@background\else % add background
+    \AddToShipoutPicture*{\put(0,0){\parbox[b][\paperheight]{\paperwidth}{%
+      \vfill\centering%
+      \includegraphics[width=\paperwidth,height=\paperheight,%
+        keepaspectratio]{\cl@background}%
+    }}}%
+  \fi
   \vspace*{-36pt} % - \topmargin - \headheight - \headsep
   {
     \setlength\parindent{0pt}
@@ -234,19 +241,13 @@
       \includegraphics[scale=0.125]{signature}\\
       \@author}
   }
-  \ifx\@empty\cl@background\else % add background
-    \AddToShipoutPicture*{\put(0,0){\parbox[b][\paperheight]{\paperwidth}{%
-      \vfill\centering%
-      \includegraphics[width=\paperwidth,height=\paperheight,%
-        keepaspectratio]{\cl@background}%
-    }}}%
-  \fi
 }
 
 %------------------------------------------------------------------------------
 % Make resume
 \let\maketitle\undefined % don't need maketitle
 \newcommand\makeinfo{
+  \pagestyle{plain}
   \thispagestyle{fancy}
   {
     \parindent\z@
