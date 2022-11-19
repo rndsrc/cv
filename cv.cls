@@ -32,7 +32,9 @@
 
 \RequirePackage{multicol,multirow,rotating}
 \RequirePackage{hyperref}
+\RequirePackage{sidecap,caption}
 \RequirePackage{graphicx,eso-pic}
+%RequirePackage{xcolor,sectsty}
 \RequirePackage{enumitem}
 
 %==============================================================================
@@ -149,12 +151,14 @@
 
 %------------------------------------------------------------------------------
 % References
-\usepackage[square,comma,super]{natbib}
-\bibliographystyle{unsrtapj}
-\renewcommand\bibfont{\scriptsize}%{\footnotesize}
+\usepackage[square,comma,numbers,sort&compress]{natbib}
+%\usepackage[super,comma,numbers]{natbib}
+%\bibliographystyle{unsrtapj}
+\bibliographystyle{unsrtcv}
+%\renewcommand\bibfont{\scriptsize}%{\footnotesize}
 \setlength\bibsep{\z@}
-\renewcommand\bibpreamble{\begin{multicols}{2}}
-\renewcommand\bibpostamble{\end{multicols}}
+%\renewcommand\bibpreamble{\begin{multicols}{2}}
+%\renewcommand\bibpostamble{\end{multicols}}
 \renewcommand\bibsection{\subsection*{%
     \refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
 
