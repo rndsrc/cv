@@ -36,6 +36,7 @@
 \RequirePackage{graphicx,eso-pic}
 %RequirePackage{xcolor,sectsty}
 \RequirePackage{enumitem}
+\RequirePackage{bold-extra}
 
 %==============================================================================
 % Layout/Format
@@ -93,7 +94,7 @@
 \renewcommand\section{\@startsection{section}{1}{\z@}%
   {-3.5ex \@plus -1ex \@minus -1ex}%
   {2.3ex \@plus .2ex}%
-  {\normalfont\large\bfseries}}
+  {\normalfont\Large\scshape\bfseries}}
 
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
   {\cv@parsep}{-1em}{\normalfont\normalsize\bfseries}}
@@ -159,7 +160,7 @@
 \setlength\bibsep{\z@}
 %\renewcommand\bibpreamble{\begin{multicols}{2}}
 %\renewcommand\bibpostamble{\end{multicols}}
-\renewcommand\bibsection{\subsection*{%
+\renewcommand\bibsection{\section*{%
     \refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
 
 %==============================================================================
