@@ -92,18 +92,18 @@
 %------------------------------------------------------------------------------
 % Define chapter, section, etc
 \newcommand\chapter{\@startsection{chapter}{1}{\z@}%
-  {-3.2ex\@plus-.8ex\@minus-.4ex}%
-  { 1.6ex\@plus .2ex}%
+  {-3.6ex\@plus-1ex\@minus-.2ex}%
+  { 1.8ex\@plus.2ex}%
   {\normalfont\Large\scshape\bfseries}}
 
 \renewcommand\section{\@startsection{section}{2}{\z@}%
-  {-1.6ex\@plus-.4ex\@minus-.2ex}%
-  {  .8ex\@plus .1ex}%
+  {-2.4ex\@plus-1ex\@minus-.2ex}%
+  { 1.2ex\@plus.2ex}%
   {\normalfont\large\bfseries}}
 
 \renewcommand\subsection{\@startsection{subsection}{3}{\z@}%
-  {-.8ex\@plus-.2ex\@minus-.1ex}%
-  { .4ex\@plus .1ex}%
+  {-1.8ex\@plus-1ex\@minus-.2ex}%
+  {  .9ex\@plus.2ex}%
   {\normalfont\normalsize\bfseries}}
 
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
