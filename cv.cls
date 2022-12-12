@@ -91,28 +91,26 @@
 
 %------------------------------------------------------------------------------
 % Define chapter, section, etc
-\newcommand\chapter{\@startsection{chapter}{0}{\z@}%
-  {-3.5ex \@plus -1ex \@minus -.2ex}%
-  { 2.3ex \@plus .2ex}%
-  {\normalfont\LARGE\scshape\bfseries}}
+\newcommand\chapter{\@startsection{chapter}{1}{\z@}%
+  {-3.2ex\@plus-.8ex\@minus-.4ex}%
+  { 1.6ex\@plus .2ex}%
+  {\normalfont\Large\scshape\bfseries}}
 
-\renewcommand\section{\@startsection{section}{1}{\z@}%
-  {-3.5ex \@plus -1ex \@minus -.2ex}%
-  { 2.3ex \@plus .2ex}%
-  {\normalfont\Large\bfseries}}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-  {-3.25ex\@plus -1ex \@minus -.2ex}%
-  { 1.5ex \@plus .2ex}%
+\renewcommand\section{\@startsection{section}{2}{\z@}%
+  {-1.6ex\@plus-.4ex\@minus-.2ex}%
+  {  .8ex\@plus .1ex}%
   {\normalfont\large\bfseries}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-  {-3.25ex\@plus -1ex \@minus -.2ex}%
-  { 1.5ex \@plus .2ex}%
+
+\renewcommand\subsection{\@startsection{subsection}{3}{\z@}%
+  {-.8ex\@plus-.2ex\@minus-.1ex}%
+  { .4ex\@plus .1ex}%
   {\normalfont\normalsize\bfseries}}
 
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
   {\cv@parsep}{-1em}{\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\z@}%
-  {\cv@subsep}{-1em}{\normalfont\normalsize\bfseries}}
+
+\let\subsubsection\undefined
+\let\subparagraph\undefined
 
 %------------------------------------------------------------------------------
 % Itemize list
@@ -173,8 +171,7 @@
 \setlength\bibsep{\z@}
 %\renewcommand\bibpreamble{\begin{multicols}{2}}
 %\renewcommand\bibpostamble{\end{multicols}}
-\renewcommand\bibsection{\section*{%
-    \refname\@mkboth{\MakeUppercase{\refname}}{\MakeUppercase{\refname}}}}
+\renewcommand\bibsection{\section*{\refname}}
 
 %==============================================================================
 % Main code
