@@ -90,11 +90,24 @@
 \pagestyle{plain}
 
 %------------------------------------------------------------------------------
-% Redefine paragraphs:
+% Define chapter, section, etc
+\newcommand\chapter{\@startsection{chapter}{0}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  { 2.3ex \@plus .2ex}%
+  {\normalfont\LARGE\scshape\bfseries}}
+
 \renewcommand\section{\@startsection{section}{1}{\z@}%
-  {-3.5ex \@plus -1ex \@minus -1ex}%
-  {2.3ex \@plus .2ex}%
-  {\normalfont\Large\scshape\bfseries}}
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  { 2.3ex \@plus .2ex}%
+  {\normalfont\Large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  { 1.5ex \@plus .2ex}%
+  {\normalfont\large\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  { 1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
 
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
   {\cv@parsep}{-1em}{\normalfont\normalsize\bfseries}}
