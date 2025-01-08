@@ -30,13 +30,23 @@
 %------------------------------------------------------------------------------
 \LoadClass{article}
 
-\RequirePackage{multicol,multirow,rotating}
+% Macro tools
+\RequirePackage{xspace}
 \RequirePackage{hyperref}
+
+% Layouts
+\RequirePackage{multicol,multirow,rotating}
+\RequirePackage{sectsty}
+\RequirePackage{enumitem}
+
+% Graphics
 \RequirePackage{sidecap,caption}
 \RequirePackage{graphicx,eso-pic}
-%RequirePackage{xcolor,sectsty}
-\RequirePackage{enumitem}
+
+% Fonts
+\RequirePackage{soul}
 \RequirePackage{bold-extra}
+\RequirePackage{xcolor}
 
 %==============================================================================
 % Layout/Format
@@ -186,6 +196,7 @@
 \newcommand\github   [1]{\gdef\cv@github   {#1}}
 \newcommand\gitlab   [1]{\gdef\cv@gitlab   {#1}}
 \newcommand\bitbucket[1]{\gdef\cv@bitbucket{#1}}
+\newcommand\linkedin [1]{\gdef\cv@linkedin {#1}}
 
 % Cover letter
 \newcommand\background[1]{\gdef\cl@background{#1}}
@@ -253,7 +264,7 @@
     \noindent\hspace*{.67\textwidth}
     \parbox{.33\textwidth}{\strut\raggedright
       \cl@closing\\*[2\medskipamount]
-      \includegraphics[scale=0.125]{signature}\\
+      \includegraphics[scale=0.125]{cv/signature}\\
       \@author}
   }
 }
@@ -278,6 +289,7 @@
       \ifcsname cv@github\endcsname\\\url{\cv@github}\fi
       \ifcsname cv@gitlab\endcsname\\\url{\cv@gitlab}\fi
       \ifcsname cv@bitbucket\endcsname\\\url{\cv@bitbucket}\fi
+      \ifcsname cv@linkedin\endcsname\\\url{\cv@linkedin}\fi
     \end{minipage}
   }
   \vspace*{6pt}
