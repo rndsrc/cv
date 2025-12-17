@@ -32,7 +32,9 @@
 
 % Macro tools
 \RequirePackage{xspace}
+\RequirePackage{csquotes}
 \RequirePackage{hyperref}
+\RequirePackage{aas_macros}
 
 % Layouts
 \RequirePackage{multicol,multirow,rotating}
@@ -42,6 +44,7 @@
 % Graphics
 \RequirePackage{sidecap,caption}
 \RequirePackage{graphicx,eso-pic}
+\RequirePackage{pdfpages}
 
 % Fonts
 \RequirePackage{soul,contour}
@@ -186,14 +189,14 @@
 %------------------------------------------------------------------------------
 % References
 \usepackage[square,comma,numbers,sort&compress]{natbib}
-%\usepackage[super,comma,numbers]{natbib}
 %\bibliographystyle{unsrtapj}
 \bibliographystyle{unsrtcv}
-%\renewcommand\bibfont{\scriptsize}%{\footnotesize}
+
+\renewcommand\bibsection{\chapter*{\refname}}
+%\renewcommand\bibfont{\small}
 \setlength\bibsep{\z@}
 %\renewcommand\bibpreamble{\begin{multicols}{2}}
 %\renewcommand\bibpostamble{\end{multicols}}
-\renewcommand\bibsection{\section*{\refname}}
 
 %==============================================================================
 % Main code
@@ -225,6 +228,7 @@
 % E-mail
 \newcommand\mailto[1]{\href{mailto:#1}{\texttt{#1}}}
 
+%------------------------------------------------------------------------------
 % Redefine \part[]{}
 \def\@part[#1]#2{%
   \thispagestyle{fancy}
