@@ -44,7 +44,7 @@
 \RequirePackage{graphicx,eso-pic}
 
 % Fonts
-\RequirePackage{soul}
+\RequirePackage{soul,contour}
 \RequirePackage{bold-extra}
 \RequirePackage{xcolor}
 
@@ -124,16 +124,28 @@
 
 %------------------------------------------------------------------------------
 % Itemize list
-\newenvironment{blist}{\itemize
-                \parskip\z@\topsep\z@\partopsep\z@
+\newenvironment{blist}{\list{}
+               {\parskip\z@\topsep\z@\partopsep\z@
                 \itemsep\cv@tlssep\itemindent\z@
                 \parsep\z@\listparindent\z@
                 \labelsep\z@
                 \labelwidth18pt
                 \leftmargin18pt
                 \rightmargin\z@
-                \let\makelabel\tlistlabel}
-               {\enditemize}
+                \let\makelabel\tlistlabel}}
+               {\endlist}
+
+\newenvironment{slist}{\list{}
+               {\parskip\z@\topsep\z@\partopsep\z@
+                \itemsep\cv@tlssep\itemindent\z@
+                \parsep\z@\listparindent\z@
+                \labelsep\z@
+                \labelwidth18pt
+                \leftmargin18pt
+                \rightmargin\z@
+                \let\makelabel\slistlabel}}
+               {\endlist}
+\newcommand*\slistlabel[1]{\normalfont #1\hfill}
 
 % Tabbed list
 \newenvironment{tlist}{\list{}
@@ -166,8 +178,8 @@
                 itemsep=\cv@ilssep,itemindent=0pt,
                 parsep=0pt,listparindent=0pt,
                 labelsep=.5em,
-                labelwidth=2.em,
-                leftmargin=2.em,
+                labelwidth=2.5em,
+                leftmargin=2.5em,
                 rightmargin=0pt]{etaremune}
 \newenvironment{ilist}{\etaremune{}{}}{\endetaremune}
 
@@ -188,7 +200,7 @@
 %------------------------------------------------------------------------------
 % Title page information:
 \newcommand\address  [1]{\gdef\cv@address  {#1}}
-\newcommand\info     [1]{\gdef\cv@info     {#1}}
+\newcommand\linfo    [1]{\gdef\cv@linfo    {#1}}
 \newcommand\phone    [1]{\gdef\cv@phone    {#1}}
 \newcommand\email    [1]{\gdef\cv@email    {#1}}
 \newcommand\website  [1]{\gdef\cv@website  {#1}}
@@ -197,6 +209,7 @@
 \newcommand\gitlab   [1]{\gdef\cv@gitlab   {#1}}
 \newcommand\bitbucket[1]{\gdef\cv@bitbucket{#1}}
 \newcommand\linkedin [1]{\gdef\cv@linkedin {#1}}
+\newcommand\rinfo    [1]{\gdef\cv@rinfo    {#1}}
 
 % Cover letter
 \newcommand\background[1]{\gdef\cl@background{#1}}
@@ -277,11 +290,12 @@
   \thispagestyle{fancy}
   {
     \parindent\z@
-    \begin{minipage}[t]{0.50\textwidth}\raggedright
+    \begin{minipage}[t]{0.75\textwidth}\raggedright
       \cv@address%
-      \ifcsname cv@info\endcsname\\\cv@info\fi
+      \ifcsname cv@linfo\endcsname\\\cv@linfo\fi
     \end{minipage}
-    \begin{minipage}[t]{0.50\textwidth}\raggedleft
+    \hspace{-0.5\textwidth}
+    \begin{minipage}[t]{0.75\textwidth}\raggedleft
       Phone:~\cv@phone\\
       E-mail:~\mailto{\cv@email}\\
       Website:~\url{\cv@website}%
@@ -290,6 +304,7 @@
       \ifcsname cv@gitlab\endcsname\\\url{\cv@gitlab}\fi
       \ifcsname cv@bitbucket\endcsname\\\url{\cv@bitbucket}\fi
       \ifcsname cv@linkedin\endcsname\\\url{\cv@linkedin}\fi
+      \ifcsname cv@rinfo\endcsname\\\cv@rinfo\fi
     \end{minipage}
   }
   \vspace*{6pt}
